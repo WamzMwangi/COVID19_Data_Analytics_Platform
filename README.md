@@ -1,4 +1,4 @@
-### SQL: Data Ingestion and Visualization Project
+## SQL: Data Ingestion and Visualization Project
 
 This repository is part of a practical lesson where I guide my students through integrating data from CSV files into a relational database, applying basic database design and normalization principles, and then connecting the database to a visualization tool for interactive data analysis. The project uses a real-world COVID-19 dataset to demonstrate end-to-end basic data ingestion and normalization on MySQL.
 ___
@@ -20,7 +20,7 @@ So that is a good start, digging further we can also further identify entities b
 
 | Table Name     | Description                              |
 |----------------|------------------------------------------|
-| 'country_statistics'   | Stores static information, such as _population, gdp,diabetes prevalence, median age,male and female smokers,handwashing facilities_ etc...|
+| `country_statistics`   | Stores static information, such as _population, gdp,diabetes prevalence, median age,male and female smokers,handwashing facilities_ etc...|
 | `cases`        | Records COVID cases per day, per country and related info: _total cases, new cases, total cases per million, new cases per million_ etc...|
 | `deaths`    | Records COVID deaths per day, per country and related info:_total deaths, new deaths, total deaths per million etc_...|
 |`tests`  |Records COVID testing stats per day, per country and related info: _total tests, new tests, test per thousands, test per case etc...|
@@ -35,12 +35,12 @@ A table is said to be in 1NF if every column contains atomic values and there ar
 
 ##### **b. The Second Normal Form (2NF)**
 For a table to be in 2NF, it must already be in 1NF and all non-key attributes must be fully dependent on the entire primary key and not a part of it. This is especialy important to check when you have tables with composite primary keys. In our case, we have 4 tables with composite keys, so let us check if there are any partial dependencies we have to eliminate.
-Taking the deaths table, our composite primary keys are the `iso_code` (country code unique to each country) and the `date_recorded` (the date when the death data was recorded). Our non-key attributes include: `total_deaths`, `new_deaths`, 'deaths_per_million`. Now, here we ask ourselves, does the value in total_deaths depend on both iso_code and date_recorded? The answer is YES. The total deaths value, is the total number of deaths from COVID 19 in a specific country and on a specific date, you cannot make sense of that value, without the country code and the date. NB: We say 2000 deaths occured in Kenya, on 15/08/2025. So all non-key attributes depend on both primary keys and there are no partial dependencies.
+Taking the deaths table, our composite primary keys are the `iso_code` (country code unique to each country) and the `date_recorded` (the date when the death data was recorded). Our non-key attributes include: `total_deaths`, `new_deaths`, `deaths_per_million`. Now, here we ask ourselves, does the value in total_deaths depend on both iso_code and date_recorded? The answer is YES. The total deaths value, is the total number of deaths from COVID 19 in a specific country and on a specific date, you cannot make sense of that value, without the country code and the date. NB: We say 2000 deaths occured in Kenya, on 15/08/2025. So all non-key attributes depend on both primary keys and there are no partial dependencies.
 
-The same rationale can be applied to the `cases', `tests`, and `admissions` tables, because they have the same exact composite keys.
+The same rationale can be applied to the `cases`, `tests`, and `admissions` tables, because they have the same exact composite keys.
 
 ##### **c. The Third Normal Form (3NF)**
-Last but not least,we have 3NF. A table is said to be in 3NF if it is already in 2NF and when all non-key attributes only depend on the primary key(s), rather than depend on another non-key attribute. 3NF is all about eliminating transitive dependecies. Looking at our data, right off the bat, anything with the word 'smoothed' is obviously a transitive dependency. For example, look at the cases table,we have `new_cases` and `new_cases_smoothed', the smoothed new cases is dependent on new cases,meaning if the value of `new_cases` changes, then the values of `new_cases_smoothed' ALSO changes!
+Last but not least,we have 3NF. A table is said to be in 3NF if it is already in 2NF and when all non-key attributes only depend on the primary key(s), rather than depend on another non-key attribute. 3NF is all about eliminating transitive dependecies. Looking at our data, right off the bat, anything with the word 'smoothed' is obviously a transitive dependency. For example, look at the cases table,we have `new_cases` and `new_cases_smoothed`, the smoothed new cases is dependent on new cases,meaning if the value of `new_cases` changes, then the values of `new_cases_smoothed' ALSO changes!
 
 But there is a trade-off we must apply here...
 Normalization is about structuring your database efficiently,making reporting easy. So even if 3NF would suggest not storing the smoothed data in the same table, it might be better in terms of query performance to leave the table as is. The smoothed values (cases,deaths,tests) and derived values that require complex calculations to aggregate. Doing it manually, you would have to aggregate the data for every 7 days (for example), this can be really slow especially for a large dataset like the one we have (80,000+ rows). So it might be more efficient to just store the derived value instead of running the calculation for every query. Having the derived value, all you need to do is use a simple SELECT statement to derive the necessary data. So in this context, since reporting and performance benefits justify it, we will ignore this violation of 3NF.
