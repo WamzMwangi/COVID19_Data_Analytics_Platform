@@ -22,11 +22,11 @@ So that is a good start, digging further we can also further identify entities b
 
 | Table Name     | Description                              |
 |----------------|------------------------------------------|
-| 'country_statistics'   | Stores static information, such as population, gdp,diabetes prevalence, median age,male and female smokers,handwashing_facilities etc...|
-| `cases`        | Records COVID cases per day, per country and related info: total cases, new cases, total cases per million, new cases per million etc...|
-| `deaths`    | Records COVID deaths per day, per country and related info:total deaths, new deaths, total deaths per million etc...|
-|'tests'   |Records COVID testing stats per day, per country and related info: total tests, new tests, test per thousands, test per case etc...|
-|'admissions'  | Records COVID data on patients currently and historically admitted in hospitals eg, icu admissions, total hospital admissions, weekly admissions etc...|
+| 'country_statistics'   | Stores static information, such as _population, gdp,diabetes prevalence, median age,male and female smokers,handwashing facilities_ etc...|
+| `cases`        | Records COVID cases per day, per country and related info: _total cases, new cases, total cases per million, new cases per million_ etc...|
+| `deaths`    | Records COVID deaths per day, per country and related info:_total deaths, new deaths, total deaths per million etc_...|
+|`tests`  |Records COVID testing stats per day, per country and related info: _total tests, new tests, test per thousands, test per case etc...|
+|`admissions` | Records COVID data on patients currently and historically admitted in hospitals eg, _icu admissions, total hospital admissions, weekly admissions_ etc...|
 
 
 
