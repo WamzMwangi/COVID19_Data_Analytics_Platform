@@ -1,1 +1,3 @@
 # COVID19_Data_Analytics_Platform
+### SQL: Data Ingestion and Visualization Project
+This repository is part of a practical lesson where I guide my students through integrating data from CSV files into a relational database, applying basic database design and normalization principles, and then connecting the database to a visualization tool for interactive data analysis. The project uses real-world COVID-19 datasets to demonstrate end-to-end basic data ingestion and analytics workflows.
