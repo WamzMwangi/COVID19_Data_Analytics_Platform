@@ -18,9 +18,13 @@ The first step in developing your database schema is by first identifying your e
 
 So that is a good start, digging further we can also further identify entities by grouping columns into what they are 'talking about', think of it like 'themes'. What I mean is, we can have an entity for deaths, another for tests, another for cases and another for admissions. The attributes will just be the columns that are related to that key theme. Here is a breakdown of the entities and the attributes:
 
-|----|----|
-|:----|:----|
-|COUNTRY_STATISTICS | Iso_code PRIMARY KEY|
+
+
+| Table Name     | Description                              | Key Columns                  |
+|----------------|------------------------------------------|------------------------------|
+| `country_statistics`     | Stores static information, such as population, gdp,diabetes prevalence, median age,male and female smokers, etc...|          |
+| `cases`        | Records COVID cases and related info     | `case_id`, `patient_id`      |
+| `deaths`    | Stores geographical location information | `location_id`, `country`     |
 
 
 
