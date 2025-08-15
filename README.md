@@ -22,7 +22,7 @@ So that is a good start, digging further we can also further identify entities b
 
 | Table Name     | Description                              | Key Columns                  |
 |----------------|------------------------------------------|------------------------------|
-| **country_statistics**    | Stores static information, such as population, gdp,diabetes prevalence, median age,male and female smokers, etc...|'Continent','Location'
+| **country_statistics**    | Stores static information, such as population, gdp,diabetes prevalence, median age,male and female smokers, etc | 'Continent','Location'
 'Population','population_density','Median_age','Aged_65_older','Aged_70_older','Gdp_per_capita','Extreme_poverty','Cardiovasc_death_rate','diabetes_prevalence','female_smokers','male_smokers	handwashing_facilities','Life_expectancy','human_development_index'|
 | `cases`        | Records COVID cases and related info     | `case_id`, `patient_id`      |
 | `deaths`    | Stores geographical location information | `location_id`, `country`     |
