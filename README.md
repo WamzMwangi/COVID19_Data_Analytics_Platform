@@ -19,7 +19,8 @@ The first step in developing your database schema is by first identifying your e
 So that is a good start, digging further we can also further identify entities by grouping columns into what they are 'talking about', think of it like 'themes'. What I mean is, we can have an entity for deaths, another for tests, another for cases and another for admissions. The attributes will just be the columns that are related to that key theme. Here is a breakdown of the entities and the attributes:
 
 |----|----|
-|COUNTRY_STATISTICS|Iso_code PRIMARY KEY|
+|:----|:----|
+|COUNTRY_STATISTICS | Iso_code PRIMARY KEY|
 
 
 
