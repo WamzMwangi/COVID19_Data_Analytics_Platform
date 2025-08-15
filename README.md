@@ -9,7 +9,7 @@ By the end of this practical lesson, students should be able to confidently:
 - Design a normalized database scheme, based on the data in the import file (basic data modelling)
 - Draw a complete Entity Relationship Diagram based on the designed schema
 ___
-### Step-by-by Guide
+### :  Step-by-by Guide
 **1. Create a dedicated GitHub repo for your project**
 As you write your queries (your sql code) on MySQL workbench, save those scripts such as in this case, _covid19_databse.sql_ in the project folder. Git add, commit and push any changes to GitHub as you would any other file. This is the simplest most straight forward way to do it, you can also explore ways to link your vscode to workbench to allow you to use the VS code UI to commit your changes.
 
@@ -17,6 +17,32 @@ As you write your queries (your sql code) on MySQL workbench, save those scripts
 The first step in developing your database schema is by first identifying your entities. How do you do that? Look, at the dataset and try and group your columns logically. Using our COVID_19 dataset, we have columns more or less describing different aspects of the same thing. At the highest level, we can break down the dataset into 2 dimensions, we have country demographics/statistics that describe things like population, median age, gdp per capita and so on. The data in these columns do nnot change. On the other had we have covid-19 related data that is recorded on a daily basis, it includes data on total number of cases, icu admissions,deaths, tests and so much more. This data, unlike the later, is dynamic is changing on a daily basis and on a country basis.
 
 So that is a good start, digging further we can also further identify entities by grouping columns into what they are 'talking about', think of it like 'themes'. What I mean is, we can have an entity for deaths, another for tests, another for cases and another for admissions. The attributes will just be the columns that are related to that key theme. Here is a breakdown of the entities and the attributes:
+
+|----|----|
+|COUNTRY_STATISTICS|Iso_code PRIMARY KEY
+Continent
+Location
+Population
+population_density	
+Median_age
+Aged_65_older
+Aged_70_older
+Gdp_per_capita
+Extreme_poverty
+Cardiovasc_death_rate
+diabetes_prevalence	female_smokers
+male_smokers	handwashing_facilities
+Life_expectancy
+human_development_index|
+
+
+
+
+
+
+
+
+
 
 
 
