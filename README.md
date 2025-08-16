@@ -9,7 +9,7 @@ By the end of this practical lesson, students should be able to confidently:
 - Design a normalized database scheme, based on the data in the import file (basic data modelling)
 - Draw a complete Entity Relationship Diagram based on the designed schema
 ___
-### :  Step-by-by Guide
+### Step-by-by Guide
 #### **1. Create a dedicated GitHub repo for your project**
 As you write your queries (your sql code) on MySQL workbench, save those scripts such as in this case, _covid19_databse.sql_ in the project folder. Git add, commit and push any changes to GitHub as you would any other file. This is the simplest most straight forward way to do it, you can also explore ways to link your vscode to workbench to allow you to use the VS code UI to commit your changes.
 
@@ -46,5 +46,9 @@ But there is a trade-off we must apply here...
 Normalization is about structuring your database efficiently,making reporting easy. So even if 3NF would suggest not storing the smoothed data in the same table, it might be better in terms of query performance to leave the table as is. The smoothed values (cases,deaths,tests) and derived values that require complex calculations to aggregate. Doing it manually, you would have to aggregate the data for every 7 days (for example), this can be really slow especially for a large dataset like the one we have (80,000+ rows). So it might be more efficient to just store the derived value instead of running the calculation for every query. Having the derived value, all you need to do is use a simple SELECT statement to derive the necessary data. So in this context, since reporting and performance benefits justify it, we will ignore this violation of 3NF.
 
 Now our database, if fully normalized and we can proceed to inserting the data.
-#### **4. Create your ERD**
+#### **4. Create your Entity Relationship Diagram**
+
 #### **5. Insert the relevant data into your tables**
+- 1. The next step is to move the data from your csv/xlxs file to your MySQL tables. To do this, we have to create a staging table, this is just a temporary holding place for all your data, because you cannot import data from your csv to multiple tables directly.The staging table just has all the column labels as they appear on the data.
+  2. Next, we will use the `LOAD DATA LOCAL INFILE` to load the data from our csv into our staging table. You need to enable some permissions for this to happen.
+  3. Now we can load the data from the staging table to all the respective tables.
